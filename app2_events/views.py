@@ -1,14 +1,19 @@
 from django.shortcuts import render
 
-
-def home(request):
+def events_list(request):
     events = [
-        {'name': 'فعالية تقنية الرياض', 'description': 'عرض أحدث الابتكارات', 'price': 150},
-        {'name': 'ملتقى الفعاليات الصيفية', 'description': 'فعاليات شبابية متنوعة', 'price': 90},
-        {'name': 'معرض التصميم الإبداعي', 'description': 'أعمال فنية وتصميم داخلي', 'price': 100},
+        {'name': 'فعالية رياضية', 'description': 'سباق جري في الهواء الطلق', 'price': 50},
+        {'name': 'مؤتمر تقني', 'description': 'أحدث تقنيات الذكاء الاصطناعي', 'price': 150},
+        {'name': 'ورشة عمل', 'description': 'تطوير مهارات القيادة', 'price': 75},
+        {'name': 'دورة تصوير', 'description': 'أساسيات التصوير الفوتوغرافي', 'price': 120},
+        {'name': 'فعالية طهي', 'description': 'مسابقة أفضل طبق شعبي', 'price': 90},
+        {'name': 'ندوة ثقافية', 'description': 'قضايا الفكر العربي الحديث', 'price': 45},
+        {'name': 'مهرجان فني', 'description': 'معرض لوحات ورسومات حية', 'price': 80},
+        {'name': 'فعالية صحية', 'description': 'مشي جماعي وتوعية رياضية', 'price': 60},
+        {'name': 'رحلة استكشافية', 'description': 'تجربة مغامرات صحراوية', 'price': 180},
     ]
-    return render(request, 'home.html', {
-        'page_title': 'الفعاليات المتاحة',
-        'page_message': 'استعرض الفعاليات وسجّل في ما يناسبك.',
-        'events': events
+    return render(request, 'app2_events/events.html', {
+        'events': events,
+        'page_title': 'الفعاليات المتوفرة',
+        'page_message': 'استعرض فعالياتنا الحالية وسجل اهتمامك'
     })

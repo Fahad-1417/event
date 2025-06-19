@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='accounts_home'),
+    path('', views.events_list),  # هذا يعرض الفعاليات عند الضغط على /events/
 ]
