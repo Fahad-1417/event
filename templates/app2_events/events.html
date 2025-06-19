@@ -12,13 +12,6 @@
       direction: rtl;
     }
 
-    header, footer {
-      background-color: #1e3a8a;
-      color: white;
-      padding: 15px;
-      text-align: center;
-    }
-
     main {
       padding: 40px 20px;
       max-width: 1200px;
@@ -59,11 +52,10 @@
 </head>
 <body>
 
-  <header>
-    <h1>الفعاليات المتوفرة</h1>
-  </header>
+  {% include "header.html" %}
 
   <main>
+    <h1>{{ page_title }}</h1>
     <p>{{ page_message }}</p>
 
     <div class="grid">
@@ -77,9 +69,7 @@
     </div>
   </main>
 
-  <footer>
-    © جميع الحقوق محفوظة - بنك فهد الرقمي
-  </footer>
+  {% include "footer.html" %}
 
 </body>
 </html>
