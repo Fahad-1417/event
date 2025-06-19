@@ -2,114 +2,55 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>الرئيسية - نظام إدارة الفعاليات</title>
+  <title>الرئيسية | نظام إدارة الفعاليات</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- رابط أيقونات FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    html, body {
-      height: 100%;
+    body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f6f9;
-      direction: rtl;
     }
-
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background-color: #1e3a8a;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .login-btn {
-      background-color: #10b981;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
     main {
-      flex: 1;
-      padding: 40px 20px;
+      padding: 40px;
       max-width: 1000px;
       margin: auto;
-      text-align: center;
     }
-
-    footer {
-      background-color: #1e3a8a;
+    .about-section {
+      background-color: #0f172a;
       color: white;
+      padding: 80px 20px;
       text-align: center;
-      padding: 15px;
+      width: 100vw;
+      margin: 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ الشريط العلوي -->
-  <header>
-    <h1 style="margin: 0; font-size: 24px;">نظام إدارة الفعاليات</h1>
-    <nav>
-      <a href="/">الرئيسية</a>
-      <a href="/events/">الفعاليات</a>
-      <a href="/accounts/login/" class="login-btn">تسجيل الدخول</a>
-    </nav>
-  </header>
+  {% include "header.html" %}
 
-  <!-- ✅ المحتوى الرئيسي -->
   <main>
-    <h2 style="color: #1e3a8a;">مرحبًا بك في منصتك لتنظيم الفعاليات</h2>
-    <p>هنا يمكنك استعراض الفعاليات القادمة، إنشاء حساب، والمزيد من الخدمات التفاعلية.</p>
+    <h2 style="text-align: center; color: #1e3a8a;">مرحباً بك في منصتك لتنظيم الفعاليات</h2>
+    <p style="text-align: center;">هنا يمكنك استعراض الفعاليات القادمة، إنشاء حساب، والمزيد من الخدمات التفاعلية.</p>
   </main>
 
-  <!-- ✅ قسم من نحن -->
-  <section style="background-color: #0f172a; color: white; padding: 60px 20px; text-align: center;">
-    <div style="max-width: 1000px; margin: auto;">
-      <h2 style="font-size: 32px; font-weight: bold; margin-bottom: 10px;">من نحن</h2>
-      <p style="line-height: 1.8; font-size: 16px; margin-bottom: 40px;">
-        نحن منصة متخصصة في تنظيم وتسويق الفعاليات، نهدف إلى تقديم تجربة استثنائية تترك أثراً وتساهم في نجاح الفعالية. نقدم حلول متكاملة تشمل إدارة وتنسيق وتنفيذ الفعاليات والمعارض والمؤتمرات.
-      </p>
-
-      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
-        <div style="flex: 1; min-width: 180px;">
-          <h3 style="font-size: 24px; font-weight: bold;">+120K</h3>
-          <p style="margin: 0;">فعالية</p>
-        </div>
-        <div style="flex: 1; min-width: 180px;">
-          <h3 style="font-size: 24px; font-weight: bold;">+500K</h3>
-          <p style="margin: 0;">زائر</p>
-        </div>
-        <div style="flex: 1; min-width: 180px;">
-          <h3 style="font-size: 24px; font-weight: bold;">+40K</h3>
-          <p style="margin: 0;">تذكرة</p>
-        </div>
-        <div style="flex: 1; min-width: 180px;">
-          <h3 style="font-size: 24px; font-weight: bold;">+60K</h3>
-          <p style="margin: 0;">عميل</p>
-        </div>
-      </div>
+  <section class="about-section">
+    <h2 style="font-size: 32px;">من نحن</h2>
+    <p style="max-width: 800px; margin: 20px auto;">
+      نحن منصة متخصصة في تنظيم وتسويق الفعاليات، نهدف إلى تقديم تجربة استثنائية تترك أثراً وتساهم في نجاح الفعالية.
+      نقدم حلول متكاملة تشمل إدارة وتنسيق وتنفيذ الفعاليات والمعارض والمؤتمرات.
+    </p>
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 60px; margin-top: 50px; font-size: 20px;">
+      <div><strong>+120K</strong><div>فعالية</div></div>
+      <div><strong>+500K</strong><div>زائر</div></div>
+      <div><strong>+40K</strong><div>تذكرة</div></div>
+      <div><strong>+60K</strong><div>عميل</div></div>
     </div>
   </section>
 
-  <!-- ✅ الشريط السفلي -->
-  <footer>
-    © إدارة الفعاليات - جميع الحقوق محفوظة 2025
-  </footer>
+  {% include "footer.html" %}
 
 </body>
 </html>

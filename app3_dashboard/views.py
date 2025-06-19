@@ -1,6 +1,11 @@
 from django.shortcuts import render
 
 
+def landing_page(request):
+    return render(request, 'app3_dashboard/home.html')
+
+
+
 def home(request):
     events = [
         {'name': 'فعالية المسؤولين', 'description': 'اجتماع خاص بإدارة الأنظمة', 'price': 0},

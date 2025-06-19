@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+
+def events_list(request):
+    return render(request, 'app2_events/events.html')
+
+
 def events_list(request):
     events = [
         {'name': 'فعالية رياضية', 'description': 'سباق جري في الهواء الطلق', 'price': 50},
