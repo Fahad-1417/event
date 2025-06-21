@@ -11,8 +11,16 @@
       <li><a href="{% url 'events' %}" style="color: white; text-decoration: none;"><i class="fa fa-calendar"></i> الفعاليات</a></li>
       <li><a href="#" style="color: white; text-decoration: none;"><i class="fa fa-pen"></i> حجز فعاليات</a></li>
       <li><a href="#" style="color: white; text-decoration: none;"><i class="fa fa-phone"></i> اتصل بنا</a></li>
+      
       {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}" style="color: white; text-decoration: none;"><i class="fa fa-sign-out-alt"></i> تسجيل الخروج</a></li>
+        <li>
+          <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" style="background:none; border:none; color:white; cursor:pointer;">
+              <i class="fa fa-sign-out-alt"></i> تسجيل الخروج
+            </button>
+          </form>
+        </li>
       {% else %}
         <li><a href="{% url 'login' %}" style="color: white; text-decoration: none;"><i class="fa fa-sign-in-alt"></i> تسجيل الدخول</a></li>
       {% endif %}

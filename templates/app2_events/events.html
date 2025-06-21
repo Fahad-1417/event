@@ -41,14 +41,33 @@
       transform: translateY(-5px);
     }
 
+    .event-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
     .event-card h3 {
       color: #1e3a8a;
       margin-top: 0;
     }
 
-    .event-card .price {
-      font-weight: bold;
-      color: #10b981;
+    .event-card .meta {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .event-card .location {
+      color: #4b5563;
+    }
+
+    .event-card .organizer {
+      color: #2563eb;
+      font-size: 14px;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -63,10 +82,20 @@
     <div class="grid">
       {% for event in events %}
         <div class="event-card">
-          <h3>{{ event.name }}</h3>
+          {% if event.image %}
+            <img src="{{ event.image.url }}" alt="{{ event.title }}">
+          {% endif %}
+          <h3>{{ event.title }}</h3>
+          <p class="meta">
+            التاريخ: {{ event.date }}<br>
+            الوقت: {{ event.time }}
+          </p>
+          <p class="location">الموقع: {{ event.location }}</p>
           <p>{{ event.description }}</p>
-          <p class="price">السعر: {{ event.price }} ريال</p>
+          <p class="organizer">المنظم: {{ event.organizer.username }}</p>
         </div>
+      {% empty %}
+        <p>لا توجد فعاليات حالياً.</p>
       {% endfor %}
     </div>
   </main>

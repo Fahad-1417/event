@@ -9,6 +9,9 @@ class Event(models.Model):
     time = models.TimeField()
     organizer = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    # ✅ الحقل الجديد للصورة
+    image = models.ImageField(upload_to='event_images/', null=True, blank=True)
+
     def __str__(self):
         return self.title
 
