@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def landing_page(request):
-    return render(request, 'app3_dashboard/home.html')
+    return render(request, 'home.html')
 
 
 

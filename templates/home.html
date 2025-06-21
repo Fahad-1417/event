@@ -4,26 +4,84 @@
   <meta charset="UTF-8">
   <title>الرئيسية | نظام إدارة الفعاليات</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <!-- رابط أيقونات FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f4f6f9;
     }
+
     main {
       padding: 40px;
       max-width: 1000px;
       margin: auto;
+      text-align: center;
     }
+
     .about-section {
       background-color: #0f172a;
       color: white;
       padding: 80px 20px;
       text-align: center;
-      width: 100vw;
-      margin: 0;
+      width: 100%;
+    }
+
+    .about-section p {
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    .about-metrics {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 60px;
+      margin-top: 50px;
+      font-size: 20px;
+    }
+
+    .partners-section {
+      background-color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: #1e3a8a;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      color: #555;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #444;
+      text-align: center;
+    }
+
+    .partners-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .partners-logos img {
+      height: 60px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .partners-logos img:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -32,21 +90,37 @@
   {% include "header.html" %}
 
   <main>
-    <h2 style="text-align: center; color: #1e3a8a;">مرحباً بك في منصتك لتنظيم الفعاليات</h2>
-    <p style="text-align: center;">هنا يمكنك استعراض الفعاليات القادمة، إنشاء حساب، والمزيد من الخدمات التفاعلية.</p>
+    <h2 style="color: #1e3a8a;">مرحباً بك في منصتك لتنظيم الفعاليات</h2>
+    <p>هنا يمكنك استعراض الفعاليات القادمة، إنشاء حساب، والمزيد من الخدمات التفاعلية.</p>
   </main>
 
   <section class="about-section">
     <h2 style="font-size: 32px;">من نحن</h2>
-    <p style="max-width: 800px; margin: 20px auto;">
+    <p>
       نحن منصة متخصصة في تنظيم وتسويق الفعاليات، نهدف إلى تقديم تجربة استثنائية تترك أثراً وتساهم في نجاح الفعالية.
       نقدم حلول متكاملة تشمل إدارة وتنسيق وتنفيذ الفعاليات والمعارض والمؤتمرات.
     </p>
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 60px; margin-top: 50px; font-size: 20px;">
+    <div class="about-metrics">
       <div><strong>+120K</strong><div>فعالية</div></div>
       <div><strong>+500K</strong><div>زائر</div></div>
       <div><strong>+40K</strong><div>تذكرة</div></div>
       <div><strong>+60K</strong><div>عميل</div></div>
+    </div>
+  </section>
+
+  <section class="partners-section">
+    <div class="container">
+        <h2 class="section-title">شركاء واثقون في <span>رؤيتنا الملهمة</span></h2>
+        <p class="section-subtitle">
+            ننفذ ما وعدنا به، نُلهِم، نبتكر، ونحول الأفكار إلى تجارب استثنائية متكاملة.
+        </p>
+        <div class="partners-logos">
+            <img src="#" alt="وزارة الاستثمار">
+            <img src="#" alt="وزارة الثقافة">
+            <img src="#" alt="هيئة التراث">
+            <img src="#" alt="روشن">
+            <img src="#" alt="نيوم">
+        </div>
     </div>
   </section>
 
