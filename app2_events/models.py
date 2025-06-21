@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField  # ✅ تأكد من استيراده
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
@@ -9,8 +10,8 @@ class Event(models.Model):
     time = models.TimeField()
     organizer = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    # ✅ الحقل الجديد للصورة
-    image = models.ImageField(upload_to='event_images/', null=True, blank=True)
+    # ✅ حقل الصورة باستخدام Cloudinary
+    image = CloudinaryField('image', null=True, blank=True)
 
     def __str__(self):
         return self.title
