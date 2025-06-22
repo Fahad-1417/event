@@ -104,7 +104,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'event_system/static'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # لحل collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # ملفات الوسائط
 MEDIA_URL = '/media/'
