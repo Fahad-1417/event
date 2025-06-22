@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-import cloudinary  # ✅ لإعداد الاتصال بـ Cloudinary
+import cloudinary
 
 # المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,17 +19,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # التطبيقات الخاصة بك
+    # تطبيقات المشروع
     'app1_accounts',
     'app2_events',
     'app3_dashboard',
 
-    # Cloudinary
+    # مكتبات Cloudinary
     'cloudinary',
     'cloudinary_storage',
 ]
 
-# إعدادات الوسيطات (middlewares)
+# الوسطاء
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -42,7 +42,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'event_system.urls'
 
-# إعدادات القوالب
+# إعداد القوالب
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -61,15 +61,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'event_system.wsgi.application'
 
-# إعدادات قاعدة البيانات
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# ✅ إعداد قاعدة البيانات حسب بيئة التشغيل
+if os.getenv('DJANGO_PRODUCTION') == 'True':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'event_db_jzj9',
+            'USER': 'fahad_user',
+            'PASSWORD': 'yQ4dfpF26QhyaUTkWNXm09UEkIG1JWjB',
+            'HOST': 'dpg-d1c1c82dbo4c73cfpoc0-a',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
-# التحقق من كلمات المرور
+# تحقق كلمات المرور
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -83,17 +95,17 @@ TIME_ZONE = 'Asia/Riyadh'
 USE_I18N = True
 USE_TZ = True
 
-# الملفات الثابتة (CSS, JS)
+# الملفات الثابتة
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'event_system/static'),
 ]
 
-# إعدادات MEDIA (لتخزين الصور محلياً عند الحاجة)
+# ملفات الوسائط
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# إعدادات Cloudinary لتخزين الصور
+# Cloudinary للإعلام
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dsgzirptz',
     'API_KEY': '416877925418241',
@@ -101,7 +113,7 @@ CLOUDINARY_STORAGE = {
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# ✅ تفعيل الاتصال بـ Cloudinary
+# تفعيل الاتصال بـ Cloudinary
 cloudinary.config(
     cloud_name=CLOUDINARY_STORAGE['CLOUD_NAME'],
     api_key=CLOUDINARY_STORAGE['API_KEY'],
