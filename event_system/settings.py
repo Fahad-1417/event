@@ -100,12 +100,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'event_system/static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ✅ مضاف لحل collectstatic
 
 # ملفات الوسائط
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Cloudinary للإعلام
+# إعداد Cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dsgzirptz',
     'API_KEY': '416877925418241',
