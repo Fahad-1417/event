@@ -1,12 +1,16 @@
 from pathlib import Path
 import os
 import cloudinary
+from dotenv import load_dotenv
+
+# تحميل متغيرات البيئة من ملف .env
+load_dotenv()
 
 # المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # إعدادات الأمان
-SECRET_KEY = 'django-insecure-5jcdzvhw^b0__&4mjm%#**t#om)j8^#6)mywfw#el^+^qxablf'
+SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = []
 
@@ -66,11 +70,11 @@ if os.getenv('DJANGO_PRODUCTION') == 'True':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'event_db_jzj9',
-            'USER': 'fahad_user',
-            'PASSWORD': 'yQ4dfpF26QhyaUTkWNXm09UEkIG1JWjB',
-            'HOST': 'dpg-d1c1c82dbo4c73cfpoc0-a',
-            'PORT': '5432',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST'),
+            'PORT': os.getenv('DB_PORT', '5432'),
         }
     }
 else:
@@ -100,7 +104,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'event_system/static'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ✅ مضاف لحل collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # لحل collectstatic
 
 # ملفات الوسائط
 MEDIA_URL = '/media/'
@@ -108,9 +112,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # إعداد Cloudinary
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dsgzirptz',
-    'API_KEY': '416877925418241',
-    'API_SECRET': 'sV4JuTw1cMZZxYzW9aFDKt2lGJc',
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
