@@ -3,7 +3,7 @@ import os
 import cloudinary
 from dotenv import load_dotenv
 
-# تحميل متغيرات البيئة من ملف .env
+# تحميل متغيرات البيئة من .env
 load_dotenv()
 
 # المسار الأساسي للمشروع
@@ -11,8 +11,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # إعدادات الأمان
 SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = os.getenv('DJANGO_PRODUCTION') != 'True'
+ALLOWED_HOSTS = ['*']  # أو ضع الدومين الخاص بـ Render
 
 # التطبيقات المثبتة
 INSTALLED_APPS = [
@@ -65,7 +65,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'event_system.wsgi.application'
 
-# ✅ إعداد قاعدة البيانات حسب بيئة التشغيل
+# إعداد قاعدة البيانات حسب البيئة
 if os.getenv('DJANGO_PRODUCTION') == 'True':
     DATABASES = {
         'default': {
@@ -101,16 +101,14 @@ USE_TZ = True
 
 # الملفات الثابتة
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'event_system/static'),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'event_system/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # ملفات الوسائط
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# إعداد Cloudinary
+# إعدادات Cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
@@ -125,5 +123,5 @@ cloudinary.config(
     api_secret=CLOUDINARY_STORAGE['API_SECRET']
 )
 
-# نوع المفتاح الافتراضي
+# المفتاح الافتراضي للحقل
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
