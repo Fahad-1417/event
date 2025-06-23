@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # إعدادات الأمان
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DJANGO_PRODUCTION') != 'True'
-ALLOWED_HOSTS = ['*']  # أو ضع الدومين الخاص بـ Render
+ALLOWED_HOSTS = ['*']  # يمكنك تخصيصها لاحقًا
 
 # التطبيقات المثبتة
 INSTALLED_APPS = [
@@ -68,12 +68,17 @@ WSGI_APPLICATION = 'event_system.wsgi.application'
 
 # إعداد قاعدة البيانات حسب البيئة باستخدام dj_database_url
 if os.getenv('DJANGO_PRODUCTION') == 'True':
+    db_config = dj_database_url.parse(
+        os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
+
+    # فرض sslmode=require بشكل صريح ضمن الحقل extra
+    db_config['OPTIONS'] = {'sslmode': 'require'}
+
     DATABASES = {
-        'default': dj_database_url.parse(
-            os.getenv('DATABASE_URL'),
-            conn_max_age=600,
-            ssl_require=True
-        )
+        'default': db_config
     }
 else:
     DATABASES = {
