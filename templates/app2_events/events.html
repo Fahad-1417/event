@@ -82,9 +82,12 @@
     <div class="grid">
       {% for event in events %}
         <div class="event-card">
-          {% if event.image %}
+          {% if event.image and event.image.url %}
             <img src="{{ event.image.url }}" alt="{{ event.title }}">
+          {% else %}
+            <p>لا توجد صورة متوفرة</p>
           {% endif %}
+
           <h3>{{ event.title }}</h3>
           <p class="meta">
             التاريخ: {{ event.date }}<br>
@@ -92,7 +95,12 @@
           </p>
           <p class="location">الموقع: {{ event.location }}</p>
           <p>{{ event.description }}</p>
-          <p class="organizer">المنظم: {{ event.organizer.username }}</p>
+
+          {% if event.organizer %}
+            <p class="organizer">المنظم: {{ event.organizer.username }}</p>
+          {% else %}
+            <p class="organizer">منظم غير محدد</p>
+          {% endif %}
         </div>
       {% empty %}
         <p>لا توجد فعاليات حالياً.</p>
