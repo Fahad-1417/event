@@ -2,7 +2,6 @@ from pathlib import Path
 import os
 import cloudinary
 from dotenv import load_dotenv
-import dj_database_url
 
 # تحميل متغيرات البيئة من .env
 load_dotenv()
@@ -66,19 +65,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'event_system.wsgi.application'
 
-# إعداد قاعدة البيانات حسب البيئة باستخدام dj_database_url
+# إعداد قاعدة البيانات حسب البيئة باستخدام متغيرات منفصلة
 if os.getenv('DJANGO_PRODUCTION') == 'True':
-    db_config = dj_database_url.parse(
-        os.getenv('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True
-    )
-
-    # فرض sslmode=require بشكل صريح ضمن الحقل extra
-    db_config['OPTIONS'] = {'sslmode': 'require'}
-
     DATABASES = {
-        'default': db_config
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+            'OPTIONS': {
+                'sslmode': 'require',
+            }
+        }
     }
 else:
     DATABASES = {
